@@ -8,6 +8,6 @@ Uses the following libraries:
 * [Quickie](https://github.com/vrld/Quickie) for buttons and menus
 * [SLAM](https://github.com/vrld/Stuff/tree/master/slam) for better sound control
 
-Planned: Proxies, Highscore, (tween.lua)[https://github.com/kikito/tween.lua], open for suggestions...
+Planned: Proxies, Highscore, [tween.lua](https://github.com/kikito/tween.lua), open for suggestions...
 
 Credits and thanks go to [VRLD](https://github.com/vrld/)!
