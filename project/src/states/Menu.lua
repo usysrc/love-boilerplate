@@ -18,10 +18,10 @@ function Menu:update()
     gui.group.push{grow = "down", pos = {center.x-50, center.y-100}}
 
     if gui.Button{text = "Start"} then
-        
+        Gamestate.switch(Game)
     end
     if gui.Button{text = "Options"} then
-        
+        Gamestate.switch(Options)
     end
     if gui.Button{text = "Exit"} then
         love.event.push("quit")
