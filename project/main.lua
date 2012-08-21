@@ -18,6 +18,29 @@ local Gamestate = require( LIBRARYPATH.."hump.gamestate"    )
 no_game_code = nil
 NO_WIDGET = nil
 
+-- Creates a proxy via rawset.
+-- Credit goes to vrld: https://github.com/vrld/Princess/blob/master/main.lua
+-- easier, faster access and caching of resources like images and sound
+-- or on demand resource loading
+local function Proxy(f)
+	return setmetatable({}, {__index = function(self, k)
+		local v = f(k)
+		rawset(self, k, v)
+		return v
+	end})
+end
+
+-- some standard proxies
+Image   = Proxy(function(k) return love.graphics.newImage('img/' .. k .. '.png') end)
+Sfx     = Proxy(function(k) return love.audio.newSource('sfx/' .. k .. '.ogg', 'static') end)
+Music   = Proxy(function(k) return love.audio.newSource('music/' .. k .. '.ogg', 'stream') end)
+
+--[[ usage:
+    love.graphics.draw(Image.background)
+-- or    
+    Sfx.explosion:play()
+--]]
+    
 -- require all files in a folder and its subfolders, this way we do not have to require every new file
 local function recursiveRequire(folder, tree)
     local tree = tree or {}
