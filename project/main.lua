@@ -16,7 +16,7 @@ local Gamestate = require( LIBRARYPATH.."hump.gamestate"    )
 
 -- Handle some global variables that strict.lua may (incorrectly, ofcourse) complain about:
 no_game_code = nil
-NO_WIDGET = nil
+NO_WIDGET   = nil
 
 -- Creates a proxy via rawset.
 -- Credit goes to vrld: https://github.com/vrld/Princess/blob/master/main.lua
