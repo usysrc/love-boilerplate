@@ -1,7 +1,7 @@
 [submodule "Quickie"]
       path = project/libs/Quickie
-      url = https://github.com/vrld/quickie
+      url = git://github.com/vrld/Quickie.git
 
 [submodule "hump"]
 	  path = project/libs/hump
-	  url = https://github.com/vrld/hump
+	  url = git://github.com/vrld/hump.git
