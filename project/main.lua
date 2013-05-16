@@ -15,6 +15,8 @@ local slam      = require( LIBRARYPATH.."slam"              )
 local Gamestate = require( LIBRARYPATH.."hump.gamestate"    )
 
 -- Handle some global variables that strict.lua may (incorrectly, ofcourse) complain about:
+class_commons = nil
+common = nil
 no_game_code = nil
 NO_WIDGET   = nil
 
