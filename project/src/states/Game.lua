@@ -1,12 +1,11 @@
 --
 --  Game
 --
---  Created by Tilmann Hars on 2012-08-20.
---  Copyright (c) 2012 Headchant. All rights reserved.
---
+
 local Gamestate     = require (LIBRARYPATH.."hump.gamestate")
 local gui       = require( LIBRARYPATH.."Quickie"           )
-local tween         = require (LIBRARYPATH.."tween")
+local timer = require (LIBRARYPATH.."hump.timer")
+local tween         = timer.tween
 
 Game = Gamestate.new()
 
@@ -21,10 +20,10 @@ local bigFont   =   love.graphics.newFont(32)
 local smallFont =   love.graphics.newFont(16)
 
 function Game:enter()
-    tween(4, color, { 255, 255, 0, 255 }, 'outBounce' )
+    tween(4, color, { 255, 255, 0, 255 }, 'bounce' )
 end
 function Game:update( dt )
-    tween.update(dt)
+    timer.update(dt)
     if gui.Button{text = "Go back"} then
         tween.resetAll()
         Gamestate.switch(Menu)
