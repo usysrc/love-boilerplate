@@ -25,7 +25,7 @@ end
 function Game:update( dt )
     timer.update(dt)
     if gui.Button{text = "Go back"} then
-        tween.resetAll()
+		timer.clear()
         Gamestate.switch(Menu)
     end
 end
