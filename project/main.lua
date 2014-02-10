@@ -73,7 +73,7 @@ function love.load(arg)
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	-- love.mouse.setVisible(false)
     -- print "Require Sources:"
-    recursiveRequire("src")
+	recursiveRequire("src")
 	Gamestate.registerEvents()
 	Gamestate.switch(Menu)
 end
