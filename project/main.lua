@@ -1,13 +1,13 @@
 --
---  LD24Warumup
 --
---  Created by Tilmann Hars on 20.08.2012.
---  Copyright (c) 2012 Headchant. All rights reserved.
+--  Created by Tilmann Hars
+--  Copyright (c) 2014 Headchant. All rights reserved.
 --
 
 -- Set Library Folders
 LIBRARYPATH = "libs"
 LIBRARYPATH = LIBRARYPATH .. "."
+
 
 -- Get the libs manually
 local strict    = require( LIBRARYPATH.."strict"            )
@@ -19,6 +19,11 @@ class_commons = nil
 common = nil
 no_game_code = nil
 NO_WIDGET   = nil
+TILED_LOADER_PATH = nil
+
+SCALE = 2
+TILEWIDTH = 32
+TILEHEIGHT = 32
 
 -- Creates a proxy via rawset.
 -- Credit goes to vrld: https://github.com/vrld/Princess/blob/master/main.lua
@@ -46,21 +51,37 @@ Music   = Proxy(function(k) return love.audio.newSource('music/' .. k .. '.ogg',
 -- require all files in a folder and its subfolders, this way we do not have to require every new file
 local function recursiveRequire(folder, tree)
     local tree = tree or {}
-    for i,file in ipairs(love.filesystem.enumerate(folder)) do
+    for i,file in ipairs(love.filesystem.getDirectoryItems(folder)) do
         local filename = folder.."/"..file
-        print(filename)
         if love.filesystem.isDirectory(filename) then
             recursiveRequire(filename)
-        else
+        elseif file ~= ".DS_Store" then
             require(filename:gsub(".lua",""))
         end
     end
     return tree
 end
 
+gamefile = nil
+
+
+local function extractFileName(str)
+	return string.match(str, "(.-)([^\\/]-%.?([^%.\\/]*))$")
+end
+
 -- Initialization
-function love.load()
-    print "Require Sources:"
+function love.load(arg)
+	gamefile =  "maps/tmanstestmap.tmx"
+	if arg[2] then
+		local one, two
+		one, gamefile = extractFileName(arg[2])
+		gamefile = "maps/"..gamefile
+		-- assert(gamefile=="t", gamefile)
+	end
+	math.randomseed(os.time())
+	love.graphics.setDefaultFilter("nearest", "nearest")
+	-- love.mouse.setVisible(false)
+    -- print "Require Sources:"
     recursiveRequire("src")
 	Gamestate.registerEvents()
 	Gamestate.switch(Menu)
@@ -73,7 +94,7 @@ end
 
 -- Rendering
 function love.draw()
-	
+
 end
 
 -- Input
@@ -100,3 +121,5 @@ end
 function love.joystickreleased()
 	
 end
+
+io.stdout:setvbuf("no")
