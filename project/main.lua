@@ -62,8 +62,6 @@ local function recursiveRequire(folder, tree)
     return tree
 end
 
-gamefile = nil
-
 
 local function extractFileName(str)
 	return string.match(str, "(.-)([^\\/]-%.?([^%.\\/]*))$")
@@ -71,13 +69,6 @@ end
 
 -- Initialization
 function love.load(arg)
-	gamefile =  "maps/tmanstestmap.tmx"
-	if arg[2] then
-		local one, two
-		one, gamefile = extractFileName(arg[2])
-		gamefile = "maps/"..gamefile
-		-- assert(gamefile=="t", gamefile)
-	end
 	math.randomseed(os.time())
 	love.graphics.setDefaultFilter("nearest", "nearest")
 	-- love.mouse.setVisible(false)
