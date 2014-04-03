@@ -1,4 +1,3 @@
-
 local Gamestate     = require (LIBRARYPATH.."hump.gamestate")
 local gui       = require( LIBRARYPATH.."Quickie"           )
 local Class         = require (LIBRARYPATH.."hump.class")
@@ -17,7 +16,7 @@ Thing = Class{
 
 Entity = Class{
 	init = function(self, stage, x, y)
-		self = Thing.init(self, stage, x, y)
+		self = Thing.init(self, x, y)
 		stage:register(self)
 		self.stage = stage
 		return self
