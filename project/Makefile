@@ -1,18 +1,18 @@
 # credit goes to vrld
 # source: https://love2d.org/forums/viewtopic.php?f=3&t=3620&start=20#p47895
-love=/Applications/love08f.app/Contents/MacOS/love
+love=/Applications/love.app/Contents/MacOS/love
 zip=zip
 luac=luac
 
 builddir=../bin/build/
 distdir=../bin/
 
-windir=~/Downloads/love-0.8.0-win-x86
-osxapp=~/Downloads/love-0.8.0-osx
+windir=~/Downloads/love-0.9.1-win32
+osxapp=/Applications/love.app/
 
 game=GAMENAME
-sources=main.lua src/**/*.lua libs/**/*.lua **/*.lua 
-res=img/*.* music/*.* sfx/*.*
+sources=main.lua src/**/*.lua libs/**/*.lua **/*.lua *.lua
+res=img/*.* music/*.* sfx/*.* *.ttf
 
 .PHONY : run test love clean win
 
