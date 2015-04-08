@@ -10,7 +10,6 @@
 --------------------------------------------------------------------------------
 
 local Gamestate     = require (LIBRARYPATH.."hump.gamestate")
-local gui       	= require (LIBRARYPATH.."Quickie"		)
 local Class         = require (LIBRARYPATH.."hump.class"	)
 local Vector        = require (LIBRARYPATH.."hump.vector"	)
 
