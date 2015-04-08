@@ -2,36 +2,62 @@
 --  Menu
 --
 
-local Gamestate = require( LIBRARYPATH.."hump.gamestate"    )
-local gui       = require( LIBRARYPATH.."Quickie"           )
-
+local Gamestate     = require( LIBRARYPATH.."hump.gamestate"    )
+local UI            = require( "src.UI")
+local timer         = require (LIBRARYPATH.."hump.timer")
+local tween         = timer.tween
 Menu = Gamestate.new()
 
+
 local center = { 
-        x = love.graphics.getWidth()/2,
-        y = love.graphics.getHeight()/2,
+        x = love.graphics.getWidth()/4,
+        y = love.graphics.getHeight()/4,
     }
 
-function Menu:update()
-    gui.group.push{grow = "down", pos = {center.x-50, center.y-100}}
+local stage
+local button, group
 
-    if gui.Button{text = "Start"} then
-        Gamestate.switch(Game)
-    end
-    if gui.Button{text = "Options"} then
-        Gamestate.switch(Options)
-    end
-    if gui.Button{text = "Exit"} then
-        love.event.push("quit")
-    end
-
-    gui.group.pop()
+local init = function()
+    group = UI.UIGroup(stage)
+    group:push{grow = "right", pos = {x = 2, y = 2}}
 end
+
+local newButton = function(text, onClick)
+    return UI.UIButton{
+        parent = group,
+        onClick = onClick or function()
+        end,
+        text = text,
+        scale = 2,
+        dynamicWidth = true
+    }
+end
+
+function Menu:enter(prev)
+    stage = Stage()
+    UI.UIMenuBar{ stage = stage }
+    init()
+    newButton("START", function() Gamestate.switch(Game) end)
+    button = newButton("LOAD")
+    newButton("OPTIONS")
+end
+
+function Menu:update(dt)
+    timer.update(dt)
+    stage:update(dt)
+end
+
+local canvas = love.graphics.newCanvas()
 
 function Menu:draw()
-    gui.core.draw()
+    canvas:clear()
+    love.graphics.setCanvas(canvas)
+    stage:draw()
+    love.graphics.setCanvas()
+    love.graphics.setColor(255,255,255)
+    love.graphics.draw(canvas, 0,0, 0, button.scale, button.scale)
 end
 
-function Menu:keypressed(key, code)
-    gui.keyboard.pressed(key, code)
+function Menu:mousepressed(x,y,btn)
+    stage:mousepressed(x, y, btn)
 end

@@ -10,13 +10,15 @@
 --------------------------------------------------------------------------------
 
 local Class         = require (LIBRARYPATH.."hump.class")
+require "src.entities.Entity"
 
 --------------------------------------------------------------------------------
 -- Class Definition
 --------------------------------------------------------------------------------
 
 Stage = Class{
-	init = function(self, objs)
+	init = function(self, parent, x, y, objs)
+		Entity.init(self, parent, x or 0, y or 0)
 		self.objects = objs or {}
 	end,
 	register = function(self, obj)
@@ -35,8 +37,22 @@ Stage = Class{
 		end
 	end,
 	draw = function(self)
+		love.graphics.push()
+		love.graphics.translate(self.pos.x, self.pos.y)
 		for i,v in ipairs(self.objects) do
 			v:draw()
 		end
+		love.graphics.pop()
+	end,
+	mousepressed = function(self, x, y, btn)
+		for i,v in ipairs(self.objects) do
+			if v.mousepressed then v:mousepressed(x,y,btn) end
+		end
 	end
 }
+
+--------------------------------------------------------------------------------
+-- Inheritance
+--------------------------------------------------------------------------------
+
+Stage:include(Entity)

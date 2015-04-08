@@ -21,7 +21,6 @@ local Vector        = require (LIBRARYPATH.."hump.vector"	)
 Thing = Class{
 	init = function(self, x, y)
 		self.pos = Vector(x, y)
-		return self
 	end,
 	update = function(dt)
 	end,
