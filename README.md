@@ -5,10 +5,10 @@ boilerplate code from various sources for [love](http://www.love2d.org) with gam
 
 Uses the following:
 * [hump](https://github.com/vrld/hump) for vectors, gamestates etc. pp.
-* [Quickie](https://github.com/vrld/Quickie) for buttons and menus
 * [SLAM](https://github.com/vrld/Stuff/tree/master/slam) for better sound control
 * [tween.lua](https://github.com/kikito/tween.lua)
 * Proxies: on demand resource loading
+* UI: Testing out a new UI
 
 Planned: Highscore, open for suggestions...
 
