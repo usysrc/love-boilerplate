@@ -17,10 +17,6 @@ local center = {
 local stage
 local button, group
 
-local init = function()
-    group = UI.UIGroup(stage)
-    group:push{grow = "right", pos = {x = 2, y = 2}}
-end
 
 local newButton = function(text, onClick)
     return UI.UIButton{
@@ -29,14 +25,15 @@ local newButton = function(text, onClick)
         end,
         text = text,
         scale = 2,
-        dynamicWidth = true
+        dynamicWidth = false
     }
 end
 
 function Menu:enter(prev)
     stage = Stage()
     UI.UIMenuBar{ stage = stage }
-    init()
+    group = UI.UIGroup(stage)
+    group:push{grow = "down", pos = {x = center.x-50, y = 100}}
     newButton("START", function() Gamestate.switch(Game) end)
     button = newButton("LOAD")
     newButton("OPTIONS")

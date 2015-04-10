@@ -23,6 +23,17 @@ Stage = Class{
 	end,
 	register = function(self, obj)
 		self.objects[#self.objects+1] = obj
+		obj.stage = self
+	end,
+	remove = function(self, obj)
+		for i=#self.objects,1,-1 do
+			local v = self.objects[i]
+			if v and v == obj then
+				v.stage = nil
+				table.remove(self.objects, i)
+				if v.remove then v:remove() end
+			end
+		end
 	end,
 	update = function(self, dt)
 		for i=#self.objects,1,-1 do
@@ -39,6 +50,7 @@ Stage = Class{
 	draw = function(self)
 		love.graphics.push()
 		love.graphics.translate(self.pos.x, self.pos.y)
+		print(#self.objects)
 		for i,v in ipairs(self.objects) do
 			v:draw()
 		end

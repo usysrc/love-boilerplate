@@ -81,7 +81,8 @@ end
 
 local update = function(self, dt)
 	local x, y = love.mouse.getX()/self.scale, love.mouse.getY()/self.scale
-	if  x > self.pos.x and x < self.pos.x + self.w and y > self.pos.y and y < self.pos.y + self.h then
+	local sx, sy = self.pos.x + self.stage.pos.x, self.pos.y + self.stage.pos.y
+	if  x > sx and x < sx + self.w and y > sy and y < sy + self.h then
 		self.over = true
 	else
 		self.over = false

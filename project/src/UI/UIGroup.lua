@@ -20,7 +20,7 @@ local Vector        = require (LIBRARYPATH.."hump.vector"	)
 local default = {
 	dirx = 0,
 	diry = 1,
-	spacing = { x = 4, y = 0}
+	spacing = { x = 4, y = 4}
 }
 
 local grows = {
