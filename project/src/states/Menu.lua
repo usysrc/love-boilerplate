@@ -33,7 +33,7 @@ function Menu:enter(prev)
     stage = Stage()
     UI.UIMenuBar{ stage = stage }
     group = UI.UIGroup(stage)
-    group:push{grow = "down", pos = {x = center.x-50, y = 100}}
+    group:push{grow = "down", pos = {x = center.x-40, y = 100}}
     newButton("START", function() Gamestate.switch(Game) end)
     button = newButton("LOAD")
     newButton("OPTIONS")
