@@ -23,7 +23,7 @@ local stage
 
 function Game:enter()
     stage = Stage()
-    for i=1,50 do
+    for i=1,25 do
 	    local rectangle = Entity(stage, math.random(0,800), math.random(0,600))
 	    rectangle.w, rectangle.h = math.random(16,32), math.random(16,32)
 	    rectangle.r = 0
@@ -71,14 +71,17 @@ function Game:enter()
 		self.vec.y =  self.vec.y*0.96
 		if math.abs(self.vec.x) > 10 then self.vec.x = self.vec.x*0.9 end
 		if math.abs(self.vec.y) > 10 then self.vec.y =  self.vec.y*0.9 end
+		
+		self.movement = Vector(self.vec.x*dt*10, self.vec.y*dt*10)
 
-		self.pos.x = self.pos.x + self.vec.x*dt*10
-		self.pos.y = self.pos.y + self.vec.y*dt*10
+		self.pos.x = self.pos.x + self.movement.x
+		self.pos.y = self.pos.y + self.movement.y
 	end
 
 	ship.collision = function(self, other)
 		if other.rect then
-			other.dead = true
+			local mtv = self:getMTV(other)
+			self.pos = self.pos + mtv
 		end
 	end
 

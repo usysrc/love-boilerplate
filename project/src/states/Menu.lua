@@ -58,3 +58,9 @@ end
 function Menu:mousepressed(x,y,btn)
     stage:mousepressed(x, y, btn)
 end
+
+function Menu:keypressed(key)
+    if key == "return" then
+        Gamestate.switch(Game)
+    end
+end
