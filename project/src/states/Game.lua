@@ -78,12 +78,7 @@ function Game:enter()
 		self.pos.y = self.pos.y + self.movement.y
 	end
 
-	ship.collision = function(self, other)
-		if other.rect then
-			local mtv = self:getMTV(other)
-			self.pos = self.pos + mtv
-		end
-	end
+	
 
 
 end

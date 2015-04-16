@@ -81,7 +81,11 @@ Entity = Class{
 	axisSeperate = function(self, vectorAxis, polygonA, polygonB)
 
 	end,
-	collision = function(self, other) end
+	collision = function(self, other) 
+		local mtv = self:getMTV(other)
+		self.pos = self.pos + mtv * 0.5
+		other.pos = other.pos - mtv*0.5
+	end
 }
 
 --------------------------------------------------------------------------------

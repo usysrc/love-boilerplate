@@ -113,10 +113,7 @@ Stage = Class{
 			v:draw()
 		end
 		love.graphics.pop()
-		for i=1, 32 do
-			love.graphics.line(0,i*64,800,i*64)
-			love.graphics.line(i*64,0,i*64,600)
-		end
+		
 	end,
 	mousepressed = function(self, x, y, btn)
 		for i,v in ipairs(self.objects) do
