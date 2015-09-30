@@ -75,8 +75,6 @@ Entity = Class{
 	         x2 < x1+w1 and
 	         y1 < y2+h2 and
 	         y2 < y1+h1
-
-	 	
 	end,
 	axisSeperate = function(self, vectorAxis, polygonA, polygonB)
 
