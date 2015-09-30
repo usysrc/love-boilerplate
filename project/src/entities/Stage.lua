@@ -20,6 +20,7 @@ Stage = Class{
 	init = function(self, parent, x, y, objs)
 		Entity.init(self, parent, x or 0, y or 0)
 		self.objects = objs or {}
+		self.size = {x=32,y=32}
 	end,
 	register = function(self, obj)
 		self.objects[#self.objects+1] = obj
@@ -37,7 +38,7 @@ Stage = Class{
 	end,
 	update = function(self, dt)
 		local hash = {}
-		local size = {x=64,y=64}
+		local size = self.size
 		local check = {}
 		for i=#self.objects,1,-1 do
 			local v = self.objects[i]
@@ -104,7 +105,7 @@ Stage = Class{
 			end
 		end
 
-
+		self.hash = hash
 	end,
 	draw = function(self)
 		love.graphics.push()
@@ -116,9 +117,13 @@ Stage = Class{
 		
 	end,
 	mousepressed = function(self, x, y, btn)
-		for i,v in ipairs(self.objects) do
-			if v.mousepressed then v:mousepressed(x,y,btn) end
+		local gx, gy = math.ceil(x/self.size.x), math.ceil(y/self.size.y)
+		if self.hash[gx..","..gy] then
+			for i,v in ipairs(self.hash[gx..","..gy]) do
+				if v.mousepressed and v:intersects({pos={x=x,y=y},w=1,h=1}) then v:mousepressed(x,y,btn) end
+			end
 		end
+		
 	end
 }
 
