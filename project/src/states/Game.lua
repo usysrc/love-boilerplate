@@ -69,7 +69,7 @@ function Game:enter()
 		if math.abs(self.vec.x) > 10 then self.vec.x = self.vec.x*0.9 end
 		if math.abs(self.vec.y) > 10 then self.vec.y =  self.vec.y*0.9 end
 
-		if math.abs(self.vec.x) > 16 then self.vec.x = pmath.sig(self.vec.x)*16  end
+		if math.abs(self.vec.x) > 16 then self.vec.x = pmath.sig(self.vec.x)*16 end
 		if math.abs(self.vec.y) > 16 then self.vec.y = pmath.sig(self.vec.y)*16 end
 		
 		self.movement = Vector(self.vec.x*dt*10, self.vec.y*dt*10)

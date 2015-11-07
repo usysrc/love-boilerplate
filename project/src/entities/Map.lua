@@ -28,7 +28,6 @@ Map = Class{
 		return self.data[i..","..j]
 	end,
 	isBlocked = function(self, i, j)
-		print("hl")
 		local t = self:get(i,j)
 		return t and t.blocked
 	end
