@@ -94,18 +94,19 @@ Entity = Class{
 	move = function(self, movement)
 		
 		-- stop tunneling of objects through walls
-		if math.abs(movement.x) > self.blocksize then
-			local l = math.abs(movement.x) - self.blocksize
+		local blocksize = 1.5
+		if math.abs(movement.x) > blocksize then
+			local l = math.abs(movement.x) - blocksize
 			local s = movement.x >= 0 and 1 or -1
-			self:move(Vector(s*self.blocksize, movement.y))
-			self:move(Vector(s*l, movement.y))
+			self:move(Vector(s*blocksize, movement.y))
+			self:move(Vector(s*l, 0))
 			return
 		end
-		if math.abs(movement.y) > self.blocksize then
-			local l = math.abs(movement.y) - self.blocksize
+		if math.abs(movement.y) > blocksize then
+			local l = math.abs(movement.y) - blocksize
 			local s = movement.y >= 0 and 1 or -1
-			self:move(Vector(movement.x, s*self.blocksize))
-			self:move(Vector(movement.x, s*l))
+			self:move(Vector(movement.x, s*blocksize))
+			self:move(Vector(0, s*l))
 			return
 		end
 

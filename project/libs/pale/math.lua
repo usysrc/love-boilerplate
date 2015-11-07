@@ -42,6 +42,6 @@ return {
 		return x * (2 * random() - 1)
 	end,
 	sig = function(x)
-		return x > 0 and 1 or -1
+		return x >= 0 and 1 or -1
 	end
 }

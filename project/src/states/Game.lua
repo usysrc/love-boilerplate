@@ -59,6 +59,7 @@ function Game:enter()
 	end
 
 	ship.update = function(self, dt)
+		self.lastDt = dt
 		self.vec = self.vec or {x=0, y=0}
 		local a = 1000
 		if love.keyboard.isDown("left") then
