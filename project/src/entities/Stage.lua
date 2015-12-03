@@ -117,13 +117,15 @@ Stage = Class{
 		
 	end,
 	mousepressed = function(self, x, y, btn)
-		local gx, gy = math.ceil(x/self.size.x), math.ceil(y/self.size.y)
-		if self.hash[gx..","..gy] then
-			for i,v in ipairs(self.hash[gx..","..gy]) do
-				if v.mousepressed and v:intersects({pos={x=x,y=y},w=1,h=1}) then v:mousepressed(x,y,btn) end
-			end
+		-- local gx, gy = math.ceil(x/self.size.x), math.ceil(y/self.size.y)
+		-- if self.hash[gx..","..gy] then
+		-- 	for i,v in ipairs(self.hash[gx..","..gy]) do
+		-- 		if v.mousepressed and v:intersects({pos={x=x,y=y},w=1,h=1}) then v:mousepressed(x,y,btn) end
+		-- 	end
+		-- end
+		for k,v in pairs(self.objects) do
+			if v.mousepressed and v:intersects({pos={x=x,y=y},w=1,h=1}) then v:mousepressed(x,y,btn) end
 		end
-		
 	end
 }
 
