@@ -5,25 +5,51 @@
 --
 
 -- Set Library Folders
-LIBRARYPATH = "libs"
-LIBRARYPATH = LIBRARYPATH .. "."
+_LIBRARYPATH = "libs"
+_LIBRARYPATH = _LIBRARYPATH .. "."
 
+requireLibrary = function(name)
+	return require(_LIBRARYPATH..name)
+end
 
 -- Get the libs manually
-local strict    = require( LIBRARYPATH.."strict"            )
-local slam      = require( LIBRARYPATH.."slam"              )
-local Gamestate = require( LIBRARYPATH.."hump.gamestate"    )
+local strict    = requireLibrary("strict")
+local slam      = requireLibrary("slam")
+local Gamestate = requireLibrary("hump.gamestate")
 
--- Handle some global variables that strict.lua may (incorrectly, ofcourse) complain about:
+-- Declare Global Variables
 class_commons = nil
 common = nil
 no_game_code = nil
-NO_WIDGET   = nil
-TILED_LOADER_PATH = nil
 
-SCALE = 2
-TILEWIDTH = 32
-TILEHEIGHT = 32
+-- Global Functions inspired by picolove https://github.com/gamax92/picolove/blob/master/api.lua
+function all(a)
+	local i = 0
+	return function()
+		local n = table.getn(a)
+		i = i + 1
+		if i <= n then return a[i] end
+	end
+end
+
+function add(a,v)
+	if a == nil then
+		return
+	end
+	table.insert(a,v)
+	return v
+end
+
+function del(a,dv)
+	if a == nil then
+		return
+	end
+	for i,v in ipairs(a) do
+		if v==dv then
+			table.remove(a,i)
+		end
+	end
+end
 
 -- Creates a proxy via rawset.
 -- Credit goes to vrld: https://github.com/vrld/Princess/blob/master/main.lua
@@ -37,18 +63,18 @@ local function Proxy(f)
 	end})
 end
 
--- some standard proxies
+-- Standard proxies
 Image   = Proxy(function(k) return love.graphics.newImage('img/' .. k .. '.png') end)
 Sfx     = Proxy(function(k) return love.audio.newSource('sfx/' .. k .. '.ogg', 'static') end)
 Music   = Proxy(function(k) return love.audio.newSource('music/' .. k .. '.ogg', 'stream') end)
 
---[[ usage:
+--[[ examples:
     love.graphics.draw(Image.background)
 -- or    
     Sfx.explosion:play()
 --]]
     
--- require all files in a folder and its subfolders, this way we do not have to require every new file
+-- Require all files in a folder and its subfolders, this way we do not have to require every new file
 local function recursiveRequire(folder, tree)
     local tree = tree or {}
     for i,file in ipairs(love.filesystem.getDirectoryItems(folder)) do
@@ -61,6 +87,7 @@ local function recursiveRequire(folder, tree)
     end
     return tree
 end
+
 
 
 local function extractFileName(str)
@@ -113,4 +140,5 @@ function love.joystickreleased()
 	
 end
 
+-- Get console output working with sublime text
 io.stdout:setvbuf("no")

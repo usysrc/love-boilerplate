@@ -1,17 +1,17 @@
 --
 -- Map Class
 --
--- 2015 Heachant, Tilmann Hars <headchant@headchant.com>
+-- 2016 Heachant, Tilmann Hars <headchant@headchant.com>
 --
--- Made for tilemaps and works with entity collision
+-- Made for tilemaps
 
 --------------------------------------------------------------------------------
 -- Imports
 --------------------------------------------------------------------------------
 
-local Gamestate     = require (LIBRARYPATH.."hump.gamestate")
-local Class         = require (LIBRARYPATH.."hump.class"	)
-local Vector        = require (LIBRARYPATH.."hump.vector"	)
+local Gamestate     = requireLibrary("hump.gamestate")
+local Class         = requireLibrary("hump.class")
+local Vector        = requireLibrary("hump.vector")
 
 --------------------------------------------------------------------------------
 -- Class Definition
