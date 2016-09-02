@@ -9,9 +9,10 @@ local tween         = timer.tween
 
 Game = Gamestate.new()
 
-
+local stuff = {}
 function Game:enter()
 
+	
 end
 
 function Game:update(dt)
