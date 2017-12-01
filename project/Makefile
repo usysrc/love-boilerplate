@@ -2,13 +2,12 @@
 # source: https://love2d.org/forums/viewtopic.php?f=3&t=3620&start=20#p47895
 love=/Applications/love.app/Contents/MacOS/love
 zip=zip
-luac=luac
 
 builddir=../bin/build/
 distdir=../bin/
 
-windir=~/Downloads/love-0.9.1-win32
-osxapp=/Applications/love.app/
+windir=/mnt/c/Users/thars/Downloads/love-0.10.2-win32
+osxapp=/mnt/c/Users/thars/Downloads/love-0.10.2-macosx-x64/love.app/
 
 game=GAMENAME
 sources=main.lua src/**/*.lua libs/**/*.lua **/*.lua *.lua
@@ -18,9 +17,6 @@ res=img/*.* music/*.* sfx/*.*
 
 run : test
 	$(love) .
-
-test :
-	$(luac) -p $(sources)
 
 dist : love win osx
 
