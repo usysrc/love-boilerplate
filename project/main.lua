@@ -95,7 +95,7 @@ local function recursiveRequire(folder, tree)
     local tree = tree or {}
     for i,file in ipairs(love.filesystem.getDirectoryItems(folder)) do
         local filename = folder.."/"..file
-        if love.filesystem.isDirectory(filename) then
+        if love.filesystem.getInfo(filename, "directory") then
             recursiveRequire(filename)
         elseif file ~= ".DS_Store" then
             require(filename:gsub(".lua",""))
