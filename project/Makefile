@@ -6,8 +6,8 @@ zip=zip
 builddir=../bin/build/
 distdir=../bin/
 
-windir=/mnt/c/Users/thars/Downloads/love-0.10.2-win32
-osxapp=/mnt/c/Users/thars/Downloads/love-0.10.2-macosx-x64/love.app/
+windir=~/dist/love-11.3-win64
+osxapp=~/dist/love.app/
 
 game=GAMENAME
 sources=main.lua src/**/*.lua libs/**/*.lua **/*.lua *.lua
