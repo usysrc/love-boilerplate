@@ -2,11 +2,12 @@
 # source: https://love2d.org/forums/viewtopic.php?f=3&t=3620&start=20#p47895
 love=/Applications/love.app/Contents/MacOS/love
 zip=zip
+create-dmg=create-dmg
 
 builddir=../bin/build/
 distdir=../bin/
 
-windir=~/dist/love-11.3-win64
+windir=~/dist/love-11.4-win64
 osxapp=~/dist/love.app/
 
 game=GAMENAME
@@ -25,17 +26,20 @@ love : $(builddir)/$(game).love
 
 osx : $(builddir)/$(game).app
 	cd $(builddir); \
-		zip -9 -q -r ../$(distdir)/$(game)[osx].zip $(game).app
+		create-dmg $(game).dmg ./osx/
+	$(zip) -9 -q $(distdir)/$(game)[osx].zip $(builddir)/$(game).dmg
 
 win : $(builddir)/$(game).exe
 	cd $(builddir); \
 		cp $(windir)/*.dll .; \
-		zip -q ../$(distdir)/$(game)[win].zip $(game).exe *.dll; \
+		$(zip) -q ../$(distdir)/$(game)[win].zip $(game).exe *.dll; \
 		rm *.dll
 
 $(builddir)/$(game).app : $(builddir)/$(game).love
 	cp -a $(osxapp) $(builddir)/$(game).app
+	mkdir -p $(builddir)/osx
 	cp $(builddir)/$(game).love $(builddir)/$(game).app/Contents/Resources/
+	mv $(builddir)/$(game).app $(builddir)/osx/
 
 $(builddir)/$(game).exe : $(builddir)/$(game).love
 	cat $(windir)/love.exe $(builddir)/$(game).love > $(builddir)/$(game).exe
