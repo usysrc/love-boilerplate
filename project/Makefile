@@ -26,8 +26,8 @@ love : $(builddir)/$(game).love
 
 osx : $(builddir)/$(game).app
 	cd $(builddir); \
-		create-dmg $(game).dmg ./osx/
-	$(zip) -9 -q $(distdir)/$(game)[osx].zip $(builddir)/$(game).dmg
+		create-dmg $(game).dmg ./osx/ ; \
+		$(zip) -9 -q ../$(distdir)/$(game)[osx].zip $(game).dmg
 
 win : $(builddir)/$(game).exe
 	cd $(builddir); \
