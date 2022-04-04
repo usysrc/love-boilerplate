@@ -12,7 +12,7 @@ osxapp=~/dist/love.app/
 
 game=GAMENAME
 sources=main.lua src/**/*.lua libs/**/*.lua **/*.lua *.lua
-res=img/*.* music/*.* sfx/*.*
+res=img/*.* music/*.* sfx/*.* fonts/*.*
 
 .PHONY : run test love clean win
 
