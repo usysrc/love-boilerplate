@@ -1,6 +1,5 @@
 --
---
---  Created by Tilmann Hars
+-- main.lua
 --
 require("libs.strict")
 require("globals")
