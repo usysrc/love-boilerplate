@@ -1,6 +1,0 @@
-[submodule "hump"]
-	  path = project/libs/hump
-	  url = git://github.com/vrld/hump.git
-[submodule "project/libs/pale"]
-	path = project/libs/pale
-	url = https://github.com/headchant/pale
