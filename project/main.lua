@@ -4,6 +4,7 @@
 --  Created by Tilmann Hars
 --  Copyright (c) 2022 Headchant. All rights reserved.
 --
+require("libs.strict")
 require("globals")
 
 local Gamestate = requireLibrary("hump.gamestate")
