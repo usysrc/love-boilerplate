@@ -1,5 +1,11 @@
 # credit goes to vrld
 # source: https://love2d.org/forums/viewtopic.php?f=3&t=3620&start=20#p47895
+
+# Guard statement to ensure Makefile has been modified
+ifndef MODIFIED_MAKEFILE
+$(error Please fill all fields and remove the guard statement before running this Makefile!)
+endif
+
 love=/Applications/love.app/Contents/MacOS/love
 zip=zip
 create-dmg=create-dmg
