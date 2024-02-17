@@ -1,6 +1,6 @@
 # Love-boilerplate
 
-boilerplate code from various sources for [Löve](http://www.love2d.org) with typical stuff needed for game jams like [ludum dare](http://www.ludumdare.com/compo/)
+boilerplate code from various sources for [Löve](http://www.love2d.org) with typical stuff needed for game jams like [ludum dare](https://ldjam.org)
 
 Uses the following:
 
