@@ -26,6 +26,7 @@ function add(a, v)
 		return
 	end
 	a[#a + 1] = v
+	return v
 end
 
 function del(a, dv)
@@ -79,6 +80,6 @@ end)
 
 --[[ examples:
     love.graphics.draw(Image.background)
--- or    
+-- or
     Sfx.explosion:play()
 --]]
