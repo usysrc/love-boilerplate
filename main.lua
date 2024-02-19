@@ -4,7 +4,7 @@
 require("libs.strict")
 require("globals")
 local Game = require("src.states.Game")
-local Gamestate = requireLibrary("hump.gamestate")
+local Gamestate = require("libs.hump.gamestate")
 
 -- Initialization
 function love.load()

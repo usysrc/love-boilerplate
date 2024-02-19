@@ -49,10 +49,6 @@ end
 _LIBRARYPATH = "libs"
 _LIBRARYPATH = _LIBRARYPATH .. "."
 
-requireLibrary = function(name)
-	return require(_LIBRARYPATH .. name)
-end
-
 -- Creates a proxy via rawset.
 -- Credit goes to vrld: https://github.com/vrld/Princess/blob/master/main.lua
 -- easier, faster access and caching of resources like images and sound

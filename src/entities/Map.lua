@@ -7,7 +7,7 @@
 -- Imports
 --------------------------------------------------------------------------------
 
-local Class = requireLibrary("hump.class")
+local Class = require("libs.hump.class")
 
 --------------------------------------------------------------------------------
 -- Class Definition
@@ -30,4 +30,3 @@ local Map = Class({
 })
 
 return Map
-
